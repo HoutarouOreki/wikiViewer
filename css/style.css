@@ -2,3 +2,34 @@ body {
   padding-top: 50px;
   text-align: center;
 }
+
+.aResult {
+  text-align: center;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  padding: 7px;
+  padding-top: 10px;
+  background-color: #FAFAFA;
+  border-width: 1px;
+  border-color: #EEEEEE;
+  border-style: solid;
+}
+.aResult:hover {
+  background-color: #EEEEEE;
+}
+
+h5 {
+  text-align: left;
+  color: black;
+
+}
+
+a:hover {
+  text-decoration: none;
+  text-decoration-color: auto;
+}
+
+p {
+  color: black;
+}

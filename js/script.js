@@ -19,9 +19,11 @@ $(document).ready(function() {
       console.log("success");
       var results = data.query.search;
 
+      $('.results').html("")
+
       for (var result in results) {
         arrayResults.push(new Result(results[result].title, results[result].snippet));
-        html = '<div id="articles" class="well"><a href="https://en.wikipedia.org/wiki/' + results[result].title + '"target="_blank"><h5>' + results[result].title + '</h5><p>' + results[result].snippet + '</p></a></div>';
+        html = '<div id="articles" class="aResult"><a href="https://en.wikipedia.org/wiki/' + results[result].title + '"target="_blank"><h5><strong>' + results[result].title + '</strong></h5><p>' + results[result].snippet + '</p></a></div>';
         $('.results').append(html);
       }
     })
@@ -38,6 +40,11 @@ $(document).ready(function() {
     console.log("USER INPUT = '" + userinput + "'");
     ajax(userinput);
   };
+  $("#search-area").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+      buttonClick();
+    }
+  });
   $("#search-button").click(function() {
     buttonClick();
   });
