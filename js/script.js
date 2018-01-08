@@ -1,6 +1,6 @@
 $(document).ready(function() {
   document.getElementById("search-area").focus();
-  function ajax (userinput) {
+  function ajax () {
 
     function Result(title, snippet) {
       this.title = title;
@@ -8,9 +8,9 @@ $(document).ready(function() {
     }
 
     $.ajax({
-      url: "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + userinput + "&prop=info&inprop=url&utf8=&format=json",
+      url: "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + $("#search-area").val() + "&prop=info&inprop=url&utf8=&format=json",
       type: "GET",
-      dataType: "jsonp",
+      dataType: "JSONP",
     })
 
     .done(function(data) {
@@ -18,12 +18,14 @@ $(document).ready(function() {
       var html = [];
       console.log("success");
       var results = data.query.search;
+      console.log(results);
 
-      $('.results').html("")
+      $('.results').html("");
 
       for (var result in results) {
         arrayResults.push(new Result(results[result].title, results[result].snippet));
         html = '<div id="articles" class="aResult"><a href="https://en.wikipedia.org/wiki/' + results[result].title + '"target="_blank"><h5><strong>' + results[result].title + '</strong></h5><p>' + results[result].snippet + '</p></a></div>';
+        console.log("uhh" + html);
         $('.results').append(html);
       }
     })
